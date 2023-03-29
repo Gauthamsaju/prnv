@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from '@mui/material'
 import axios from 'axios'
+import Add from './Add'
 
 
 const Viewstd = () => {
@@ -65,7 +66,7 @@ const Viewstd = () => {
                         <Button color='success' variant='contained' onClick={() => deleteValues(value.id)}> delete</Button>
                     </TableCell>
                     <TableCell>
-                        <Button color='success' variant='contained' onClick={() => Updatevalue(value.id)} > update</Button>
+                        <Button color='success' variant='contained' onClick={() => Updatevalue(value)} > update</Button>
                     </TableCell>
                     
 
@@ -78,6 +79,8 @@ const Viewstd = () => {
         </TableBody>
     </Table>
 </TableContainer>
+if(update)
+Finaljsx=<Add data={selected} method="put"/>
 
 
     return (
@@ -85,6 +88,7 @@ const Viewstd = () => {
             <br/>
             <br/>
             <br/>
+
 
 {Finaljsx}
           
