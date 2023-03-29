@@ -7,8 +7,8 @@ import Add from './Add'
 const Viewstd = () => {
     var [students, setStudents] = useState([])
     var [update, setUpdate] = useState(false)
-    var [selected,setSelected]=useState([])
-    
+    var [selected, setSelected] = useState([])
+
     useEffect(() => {
         axios.get("http://localhost:3005/students")
             .then(response => {
@@ -28,70 +28,70 @@ const Viewstd = () => {
     }
 
 
-    const Updatevalue =(value)=>{
+    const Updatevalue = (value) => {
         setSelected(value);
         setUpdate(true);
     }
 
-    var Finaljsx=  <TableContainer>
-    <Table>
-        <TableHead>
-            <TableRow>
-                <TableCell>
-                    ID
-                </TableCell>
-                <TableCell>
-                    NAME
-                </TableCell>
-                <TableCell>
-                    GRADE
-                </TableCell>
-                <TableCell>
-                    DELETE
-                </TableCell>
-                <TableCell>
-                   UPDATE
-                </TableCell>
-
-
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            {students.map((value, index) => {
-                return <TableRow key={index}>
-                    <TableCell>{value.id}</TableCell>
-                    <TableCell>{value.name}</TableCell>
-                    <TableCell>{value.grade}</TableCell>
+    var Finaljsx = <TableContainer>
+        <Table>
+            <TableHead>
+                <TableRow>
                     <TableCell>
-                        <Button color='success' variant='contained' onClick={() => deleteValues(value.id)}> delete</Button>
+                        ID
                     </TableCell>
                     <TableCell>
-                        <Button color='success' variant='contained' onClick={() => Updatevalue(value)} > update</Button>
+                        NAME
                     </TableCell>
-                    
+                    <TableCell>
+                        GRADE
+                    </TableCell>
+                    <TableCell>
+                        DELETE
+                    </TableCell>
+                    <TableCell>
+                        UPDATE
+                    </TableCell>
+
 
                 </TableRow>
-            })}
+            </TableHead>
+            <TableBody>
+                {students.map((value, index) => {
+                    return <TableRow key={index}>
+                        <TableCell>{value.id}</TableCell>
+                        <TableCell>{value.name}</TableCell>
+                        <TableCell>{value.grade}</TableCell>
+                        <TableCell>
+                            <Button color='success' variant='contained' onClick={() => deleteValues(value.id)}> delete</Button>
+                        </TableCell>
+                        <TableCell>
+                            <Button color='success' variant='contained' onClick={() => Updatevalue(value)} > update</Button>
+                        </TableCell>
+
+
+                    </TableRow>
+                })}
 
 
 
 
-        </TableBody>
-    </Table>
-</TableContainer>
-if(update)
-Finaljsx=<Add data={selected} method="put"/>
+            </TableBody>
+        </Table>
+    </TableContainer>
+    if (update)
+        Finaljsx = <Add data={selected} method="put" />
 
 
     return (
         <div>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
 
 
-{Finaljsx}
-          
+            {Finaljsx}
+
         </div>
     )
 }
